@@ -24,7 +24,7 @@ function Search({ onSearch }) {
 	};
 
 	return (
-		<div className="flex flex-col-2 items-center fit-content-center justify-center bg-black p-4 rounded-lg shadow-md ">
+		<div className="flex flex-col-2 items-center fit-content-center justify-center bg-black p-4 ">
 			<input
 				type="text"
 				placeholder="Search for a location..."

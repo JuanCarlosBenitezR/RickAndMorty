@@ -4,7 +4,7 @@ function Location({ location }) {
 	const totalResidents = location.residents.length;
 	const totalResidentsText = totalResidents === 1 ? ' resident' : ' residents';
 	return (
-		<div className="flex flex-col items-center justify-center bg-black p-4 rounded-lg shadow-md text-green-400">
+		<div className="flex flex-col items-center justify-center bg-black p-4  text-green-400">
 			<h2>{location.name}</h2>
 			<div className="grid grid-cols-3 gap-4">
 				<p className=" ">Location:{location.type}</p>

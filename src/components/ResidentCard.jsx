@@ -8,28 +8,47 @@ function ResidentCard({ url }) {
 		console.log(url);
 		fetchingData(url);
 	}, [url]);
+	const statusClass =
+		resident?.status === 'Alive'
+			? 'Alive'
+			: resident?.status === 'Dead'
+			? 'Dead'
+			: 'Unknown';
+	const statusColor =
+		resident?.status === 'Alive'
+			? 'bg-green-500'
+			: resident?.status === 'Dead'
+			? 'bg-red-500'
+			: 'bg-orange-400';
 
 	if (loading) return <h1>Loading...</h1>;
 	if (!resident) return <h1>Resident not found</h1>;
 	return (
-		<div className="flex flex-col  bg-black p-4 rounded-lg shadow-md text-white gap-2">
-			<img src={resident?.image} alt={resident?.name} />
+		<div className=" flex flex-col  bg-black p-4 rounded-lg shadow-md text-white gap-4  ">
+			<div className="relative flex justify-center">
+				<img src={resident?.image} alt={resident?.name} />
+				<div className=" absolute inset-2">
+					<span className=" text-white text-xs font-bold  rounded-full bg-gray-900 px-2 py-1 ">
+						<span
+							className={`${statusColor} inline-block w-1/25 h-1/25 rounded-full mr-1`}
+						/>
+						{statusClass}
+					</span>
+				</div>
+			</div>
 			<h2 className="align-center text-center text-lg font-bold ">
 				{resident?.name}
 			</h2>
 			<div className="w-full h-1 bg-white mb-4 rounded"></div>
 
 			<p>
-				<b>-</b>Status: {resident?.status}
-			</p>
-			<p>
-				<b>-</b>Species: {resident?.species}
+				<b>-</b>Specie: {resident?.species}
 			</p>
 			<p>
 				<b>-</b>Origin:{resident?.origin?.name}
 			</p>
 			<p>
-				<b>-</b>Eppisodes: {resident?.episode.length}{' '}
+				<b>-</b>Eppisodes where appear: {resident?.episode.length}{' '}
 			</p>
 		</div>
 	);
