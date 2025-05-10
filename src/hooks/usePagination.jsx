@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export function usePagination(array = []) {
 	const [page, setPage] = useState(1);
-	const maxItemsPerPage = 4;
+	const maxItemsPerPage = 8;
 
 	const prev = () => {
 		// if (page === 1) return

@@ -8,7 +8,7 @@ function Residents({ residents }) {
 	return (
 		<>
 			{residents && (
-				<div className="grid grid-cols-4 gap-4  p-4 rounded-lg shadow-md ">
+				<div className="grid grid-col gap-4 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4  p-4 rounded-lg shadow-md ">
 					{items.map((resident) => (
 						<ResidentCard key={resident} url={resident} />
 					))}
