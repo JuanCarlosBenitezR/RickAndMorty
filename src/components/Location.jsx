@@ -5,14 +5,20 @@ function Location({ location }) {
 	const totalResidentsText = totalResidents === 1 ? ' resident' : ' residents';
 	return (
 		<div className="flex flex-col items-center justify-center bg-black p-4  text-green-400">
-			<h2>{location.name}</h2>
-			<div className="grid grid-cols-3 gap-4">
-				<p className=" ">Location:{location.type}</p>
-				<p>Dimension: {location.dimension}</p>
-				<p>
+			<h2 className="mb-5">{location.name}</h2>
+			<div className="grid grid-cols-3 gap-4 text-pretty">
+				<p className="px-1">
+					Location: <span>{location.type}</span>
+				</p>
+				<p className="px-1">
+					Dimension:<span> {location.dimension}</span>
+				</p>
+				<p className="px-1">
 					Residents:
-					{totalResidents}
-					{totalResidentsText}
+					<span>
+						{totalResidents}
+						{totalResidentsText}
+					</span>
 				</p>
 			</div>
 		</div>
