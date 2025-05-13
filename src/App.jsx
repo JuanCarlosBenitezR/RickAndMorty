@@ -16,7 +16,7 @@ function App() {
 		fetchingData(`${base_URL}${locationId}`);
 	}, [locationId]);
 	return (
-		<>
+		<div className="pantalla text-base md:text-lg lg:text-xl xl:text-2xl ">
 			<Header />
 			<Search onSearch={setLocationId} />
 			{loading ? (
@@ -25,7 +25,7 @@ function App() {
 				location && <Location location={location} />
 			)}
 			{location && <Residents residents={location.residents} />}
-		</>
+		</div>
 	);
 }
 

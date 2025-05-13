@@ -24,7 +24,7 @@ function ResidentCard({ url }) {
 	if (loading) return <h1>Loading...</h1>;
 	if (!resident) return <h1>Resident not found</h1>;
 	return (
-		<div className=" flex flex-col  bg-black p-4 rounded-lg shadow-md text-white gap-4  ">
+		<div className=" flex flex-col  bg-[#072226] p-4 rounded-lg shadow-md text-white gap-4  ">
 			<div className="relative flex justify-center">
 				<img src={resident?.image} alt={resident?.name} />
 				<div className=" absolute inset-2">
@@ -36,7 +36,7 @@ function ResidentCard({ url }) {
 					</span>
 				</div>
 			</div>
-			<h2 className="align-center text-center text-lg font-bold ">
+			<h2 className="card align-center text-center  font-bold text-lg md:text-xl lg:text-2xl xl:text-3xl  ">
 				{resident?.name}
 			</h2>
 			<div className="w-full h-1 bg-white mb-4 rounded"></div>
