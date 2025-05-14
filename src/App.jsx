@@ -6,11 +6,13 @@ import Location from './components/Location';
 import Residents from './components/Residents';
 import Search from './components/Search';
 import './App.css';
+import Errors from './components/Errors';
 
 const base_URL = 'https://rickandmortyapi.com/api/location/';
 function App() {
-	const { fetchingData, data: location, loading } = useFetchAPI();
+	const { fetchingData, data: location, loading, error } = useFetchAPI();
 	const [locationId, setLocationId] = useState(getRandomLocationById());
+	const [errorSearch, seterrorSearch] = useState(null);
 
 	useEffect(() => {
 		fetchingData(`${base_URL}${locationId}`);
@@ -18,13 +20,17 @@ function App() {
 	return (
 		<div className="pantalla text-base md:text-lg lg:text-xl xl:text-2xl ">
 			<Header />
-			<Search onSearch={setLocationId} />
+			<Search onSearch={setLocationId} errorSearch={seterrorSearch} />
 			{loading ? (
 				<h1>Loading...</h1>
 			) : (
-				location && <Location location={location} />
+				location && !error && !errorSearch && <Location location={location} />
 			)}
-			{location && <Residents residents={location.residents} />}
+			{location && !error && !errorSearch && (
+				<Residents residents={location.residents} />
+			)}
+			{errorSearch && <Errors error={errorSearch} />}
+			{error && <Errors error={error} />}
 		</div>
 	);
 }

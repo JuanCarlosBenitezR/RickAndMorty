@@ -5,7 +5,6 @@ function ResidentCard({ url }) {
 	const { fetchingData, data: resident, loading } = useFetchAPI();
 	const [characters, setCharacters] = useState([url.length]);
 	useEffect(() => {
-		console.log(url);
 		fetchingData(url);
 	}, [url]);
 	const statusClass =

@@ -8,7 +8,7 @@ function Location({ location }) {
 			<h2 className="mb-5">{location.name}</h2>
 			<div className="grid grid-cols-3 gap-4 text-pretty">
 				<p className="px-1">
-					Location: <span>{location.type}</span>
+					Type: <span>{location.type}</span>
 				</p>
 				<p className="px-1">
 					Dimension:<span> {location.dimension}</span>
