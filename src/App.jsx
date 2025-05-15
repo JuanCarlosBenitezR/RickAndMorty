@@ -8,10 +8,15 @@ import Search from './components/Search';
 import './App.css';
 import Errors from './components/Errors';
 
-const base_URL = 'https://rickandmortyapi.com/api/location/';
+const base_URL = 'https://rickandmortyapi.com/api/location/?name=';
 function App() {
-	const { fetchingData, data: location, loading, error } = useFetchAPI();
-	const [locationId, setLocationId] = useState(getRandomLocationById());
+	const {
+		fetchingData,
+		data: location,
+		loading,
+		error,
+	} = useFetchAPI('location');
+	const [locationId, setLocationId] = useState('citadel');
 	const [errorSearch, seterrorSearch] = useState(null);
 
 	useEffect(() => {

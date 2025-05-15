@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useFetchAPI } from '../hooks/useFetchAPI';
 
 function ResidentCard({ url }) {
-	const { fetchingData, data: resident, loading } = useFetchAPI();
+	const { fetchingData, data: resident, loading } = useFetchAPI('character');
 	const [characters, setCharacters] = useState([url.length]);
 	useEffect(() => {
 		fetchingData(url);

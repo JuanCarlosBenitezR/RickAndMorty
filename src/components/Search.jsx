@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import SearchLocations from '../hooks/SearchLocations';
 
 function Search({ onSearch, errorSearch }) {
+	const [locations, setLocations] = useState([]);
 	const inputRef = useRef(null);
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -11,37 +13,42 @@ function Search({ onSearch, errorSearch }) {
 			errorSearch('Please enter a location ID');
 			return;
 		}
-		if (value < 1 || value > 126) {
-			errorSearch('Please enter a valid location ID between 1 and 126');
-			return;
-		}
 		onSearch(locationId);
 		inputRef.current.value = '';
 		errorSearch('');
 	};
 
 	return (
-		<div className="flex flex-col-2 items-center fit-content-center justify-center bg-[#082227] p-4 ">
-			<input
-				type="text"
-				placeholder="Search for a location..."
-				ref={inputRef}
-				onChange={() => errorSearch('')}
-				className="border border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-white bg-gray-800"
-			/>
-			<button
-				onClick={handleSubmit}
-				className="bg-green-500 text-white p-2 rounded-lg shadow-md hover:bg-green-600"
-			>
-				Search
-			</button>
+		<div>
+			<SearchLocations setLocations={setLocations} />
+			<div className="flex flex-col-2 items-center fit-content-center justify-center bg-[#082227] p-4 ">
+				<input
+					list="locations"
+					name="location"
+					placeholder="Search for a location..."
+					ref={inputRef}
+					onChange={() => errorSearch('')}
+					className="border border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-white bg-gray-800"
+				/>
+				<datalist id="locations">
+					{locations.map((loc) => (
+						<option key={loc.name} value={loc.name} />
+					))}
+				</datalist>
+				<button
+					onClick={handleSubmit}
+					className="bg-green-500 text-white p-2 rounded-lg shadow-md hover:bg-green-600"
+				>
+					Search
+				</button>
 
-			{/* <input
+				{/* <input
 				type="text"
 				placeholder="Search for a location..."
 				ref={inputRef}
 			/>
 			<button onClick={handleSubmit}>Search</button> */}
+			</div>
 		</div>
 	);
 }

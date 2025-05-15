@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-export function useFetchAPI() {
+export function useFetchAPI(type) {
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -10,7 +10,11 @@ export function useFetchAPI() {
 		setError(null);
 		try {
 			const { data } = await axios.get(url);
-			setData(data);
+			if (type === 'location') {
+				setData(data.results[0]);
+			} else {
+				setData(data);
+			}
 		} catch (error) {
 			if (error.response?.status === 404) {
 				setError('Location not found');
